@@ -11,7 +11,7 @@ const db = {};
 
 
 
-// Initialize the sequelize object
+// define our database connection using the sequelize object.
 let sequelize = new Sequelize({
   host: config.host,
   username: config.username,
@@ -22,7 +22,7 @@ let sequelize = new Sequelize({
 });
 
 
-// database connection
+// Testing the connection
 sequelize
   .authenticate()
   .then(() => {
@@ -49,6 +49,7 @@ fs
     db[model.name] = model;
   });
 
+// model associations 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
